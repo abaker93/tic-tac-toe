@@ -14,15 +14,15 @@
 <body>
 	<div id="paper">
 		<h1>Tic Tac Toe</h1>
-		<button id="new-game">New Game</button>
+		<div id="new-game-btn" class="btn">New Game</div>
 		<p id="player-turn"></p>
 		<main id="game-board"></main>
-		<div id="winner"></div>
+		<div id="winner" class="hide"></div>
 	</div>
-	<!-- <div id="modal" class="show">
+	<div id="modal" class="show">
 		<div id="modal-container">
 			<h1>Tic Tac Toe</h1>
-			<form>
+			<form id="modal-form">
 				<fieldset id="game-type">
 					<input id="one-player" type="radio" name="players" disabled />
 					<label for="one-player" style="color: #AAA">One Player</label>
@@ -30,20 +30,16 @@
 					<label for="two-player">Two Player</label>
 				</fieldset>
 				<fieldset id="player1-details">
-					<label for="player1-name">Player One Name</label>
-					<input id="player1-name" type="text" />
-					<label for="player1-marker">Player One Marker</label>
-					<input id="player1-marker" type="text" maxlength="1" />
+					<input id="player1-name" type="text" placeholder="Player 1 Name" />
+					<input id="player1-marker" type="text" maxlength="1" placeholder="Player 1 Marker" />
 				</fieldset>
 				<fieldset id="player2-details">
-					<label for="player2-name">Player Two Name</label>
-					<input id="player2-name" type="text" />
-					<label for="player2-marker">Player Two Marker</label>
-					<input id="player2-marker" type="text" maxlength="1" />
+					<input id="player2-name" type="text" placeholder="Player 2 Name" />
+					<input id="player2-marker" type="text" maxlength="1" placeholder="Player 2 Marker" />
 				</fieldset>
-				<input id="play-game-btn" type="submit" value="Play Game" onclick="game()" />
+				<div id="play-game-btn" class="btn">Play Game!</div>
 			</form>
 		</div>
-	</div> -->
+	</div>
 </body>
 </html>

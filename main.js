@@ -1,8 +1,36 @@
+let player1, player2
+const modal = document.getElementById('modal')
+const winnerContainer = document.querySelector('#winner')
+
 const Player = (name, marker) => {
 	return { name, marker };
 }
 
+document.getElementById('play-game-btn').addEventListener('click', () => {
+	const modalForm = document.getElementById('modal-form')
+
+	const player1Name = document.getElementById('player1-name').value
+	const player2Name = document.getElementById('player2-name').value
+	const player1Marker = document.getElementById('player1-marker').value
+	const player2Marker = document.getElementById('player2-marker').value
+
+	player1 = Player(player1Name, player1Marker)
+	player2 = Player(player2Name, player2Marker)
+
+	console.log(player1)
+	console.log(player2)
+
+	modal.classList.remove('show')
+	modal.classList.add('hide')
+
+	game()
+
+	modalForm.reset()
+})
+
 const gameBoard = (() => {
+	console.log('gameBoard start')
+
 	const gameBoardContainer = document.getElementById('game-board');
 	for (let i=1; i<=9; i++) {
 		const cell = document.createElement('div');
@@ -12,17 +40,18 @@ const gameBoard = (() => {
 	}
 })();
 
-const game = (() => {
-	let player1 = Player('player 1', 'X');
-	let player2 = Player('player 2', 'O');
+const game = () => {
+	console.log('game start')
+	
 	let playerTurn = player1;
 	let board = ['','','','','','','','',''];
 	let count = 0;
 	let winner = null;
 	const cells = Array.from(document.querySelectorAll('.cell'));
-	const winnerContainer = document.querySelector('#winner');
 
 	const checkWin = player => {
+		console.log('checkWin start')
+
 		const player1Win = `${player1.marker} ${player1.marker} ${player1.marker}`;
 		const player2Win = `${player2.marker} ${player2.marker} ${player2.marker}`;
 
@@ -52,11 +81,14 @@ const game = (() => {
 		}
 
 		if (winner !== null) {
+			winnerContainer.classList.remove('hide')
 			winnerContainer.innerText = `${winner} is the winner!`
 		}
 	}
 
 	const fillBlock = (player, cell) => {
+		console.log('fillBlock start')
+
 		const cellID = cell.id - 1;
 		board[cellID] = player.marker;
 		cell.innerText = player.marker;
@@ -65,6 +97,8 @@ const game = (() => {
 	}
 
 	const play = () => {
+		console.log('play start')
+
 		cells.forEach(cell => {
 			cell.addEventListener('click', () => {
 				const cellID = cell.id - 1;
@@ -80,4 +114,8 @@ const game = (() => {
 		})
 	}
 	play();
-})();
+};
+
+document.getElementById('new-game-btn').addEventListener('click', () => {
+	location.reload()
+})
